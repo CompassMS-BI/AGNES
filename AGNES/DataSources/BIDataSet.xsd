@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BIDataSet" targetNamespace="http://tempuri.org/BIDataSet.xsd" xmlns:mstns="http://tempuri.org/BIDataSet.xsd" xmlns="http://tempuri.org/BIDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="BIConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="BIConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.AGNES.My.MySettings.GlobalReference.Default.BIConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DATESTableAdapter" GeneratorDataComponentClassName="DATESTableAdapter" Name="DATES" UserDataComponentName="DATESTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BIConnectionString (MySettings)" DbObjectName="BI.dbo.DATES" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Date_ID, MS_FY, MS_Period, Week, Weekend_Holiday_Flag FROM DATES</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Date_ID" DataSetColumn="Date_ID" />
+              <Mapping SourceColumn="MS_FY" DataSetColumn="MS_FY" />
+              <Mapping SourceColumn="MS_Period" DataSetColumn="MS_Period" />
+              <Mapping SourceColumn="Week" DataSetColumn="Week" />
+              <Mapping SourceColumn="Weekend_Holiday_Flag" DataSetColumn="Weekend_Holiday_Flag" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="BIDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BIDataSet" msprop:Generator_UserDSName="BIDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DATES" msprop:Generator_TableClassName="DATESDataTable" msprop:Generator_TableVarName="tableDATES" msprop:Generator_TablePropName="DATES" msprop:Generator_RowDeletingName="DATESRowDeleting" msprop:Generator_RowChangingName="DATESRowChanging" msprop:Generator_RowEvHandlerName="DATESRowChangeEventHandler" msprop:Generator_RowDeletedName="DATESRowDeleted" msprop:Generator_UserTableName="DATES" msprop:Generator_RowChangedName="DATESRowChanged" msprop:Generator_RowEvArgName="DATESRowChangeEvent" msprop:Generator_RowClassName="DATESRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Date_ID" msprop:Generator_ColumnVarNameInTable="columnDate_ID" msprop:Generator_ColumnPropNameInRow="Date_ID" msprop:Generator_ColumnPropNameInTable="Date_IDColumn" msprop:Generator_UserColumnName="Date_ID" type="xs:dateTime" />
+              <xs:element name="MS_FY" msprop:Generator_ColumnVarNameInTable="columnMS_FY" msprop:Generator_ColumnPropNameInRow="MS_FY" msprop:Generator_ColumnPropNameInTable="MS_FYColumn" msprop:Generator_UserColumnName="MS_FY" type="xs:short" />
+              <xs:element name="MS_Period" msprop:Generator_ColumnVarNameInTable="columnMS_Period" msprop:Generator_ColumnPropNameInRow="MS_Period" msprop:Generator_ColumnPropNameInTable="MS_PeriodColumn" msprop:Generator_UserColumnName="MS_Period" type="xs:unsignedByte" />
+              <xs:element name="Week" msprop:Generator_ColumnVarNameInTable="columnWeek" msprop:Generator_ColumnPropNameInRow="Week" msprop:Generator_ColumnPropNameInTable="WeekColumn" msprop:Generator_UserColumnName="Week" type="xs:int" />
+              <xs:element name="Weekend_Holiday_Flag" msprop:Generator_ColumnVarNameInTable="columnWeekend_Holiday_Flag" msprop:Generator_ColumnPropNameInRow="Weekend_Holiday_Flag" msprop:Generator_ColumnPropNameInTable="Weekend_Holiday_FlagColumn" msprop:Generator_UserColumnName="Weekend_Holiday_Flag">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

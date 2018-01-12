@@ -13,6 +13,24 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\compasspowerbi\businessintelligence\AGNES Application\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\compasspowerbi\businessintelligence\AGNES Application\</InstallUrl>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>6.6.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,12 +64,33 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FFEE5DBC86AEC63681E7E65DDF762C747860B1C8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AGNES_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AGNES.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Basic 2005 Power Packs\3.0\Microsoft.VisualBasic.PowerPacks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -72,11 +111,198 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="Classes\AgnesTxt.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\PromoDesc.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\Admin.Designer.vb">
+      <DependentUpon>Admin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Admin.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Classes\AppButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\ColorPalette.vb" />
+    <Compile Include="Classes\CurrencyBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\CurrentWeek.vb" />
+    <Compile Include="Classes\DateSelector.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\FlashGroup.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\FlashNotes.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\FlashUserValue.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\ForecastGroup.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\GridLabel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\PeriodSelector.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\RetailGroup.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\WasteNud.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\WasteStationGroup.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\WasteTypeGroup.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\WeekSelector.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\AccidentReporting.Designer.vb">
+      <DependentUpon>AccidentReporting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AccidentReporting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\PossibleDeprecation.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSources\AGNESData.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AGNESData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CafeJournal.Designer.vb">
+      <DependentUpon>CafeJournal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CafeJournal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\PromoIDMgr.Designer.vb">
+      <DependentUpon>PromoIDMgr.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PromoIDMgr.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\VendorReceipts.Designer.vb">
+      <DependentUpon>VendorReceipts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\VendorReceipts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WCR.Designer.vb">
+      <DependentUpon>WCR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WCR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.vb" />
+    <Compile Include="SupportForms\AgnesMsgBox.Designer.vb">
+      <DependentUpon>AgnesMsgBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SupportForms\AgnesMsgBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AVFlash.Designer.vb">
+      <DependentUpon>AVFlash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AVFlash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSources\BIDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BIDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\BIDataSet.vb">
+      <DependentUpon>BIDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SupportForms\BigMedia.Designer.vb">
+      <DependentUpon>BigMedia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SupportForms\BigMedia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\BVFlash.Designer.vb">
+      <DependentUpon>BVFlash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\BVFlash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSources\DataSets.vb" />
+    <Compile Include="Modules\FlashStatus.Designer.vb">
+      <DependentUpon>FlashStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FlashStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportForms\ChoosePromo.Designer.vb">
+      <DependentUpon>ChoosePromo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SupportForms\ChoosePromo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportForms\FlashUnitChooser.Designer.vb">
+      <DependentUpon>FlashUnitChooser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SupportForms\FlashUnitChooser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\HRAudit.Designer.vb">
+      <DependentUpon>HRAudit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HRAudit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportForms\HRAuditNotes.Designer.vb">
+      <DependentUpon>HRAuditNotes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SupportForms\HRAuditNotes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportForms\OperatingDaysMgr.Designer.vb">
+      <DependentUpon>OperatingDaysMgr.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SupportForms\OperatingDaysMgr.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MenuEngineeringCosts.Designer.vb">
+      <DependentUpon>MenuEngineeringCosts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MenuEngineeringCosts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WasteTracking.Designer.vb">
+      <DependentUpon>WasteTracking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WasteTracking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\WeeklyFlash.Designer.vb">
+      <DependentUpon>WeeklyFlash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WeeklyFlash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Portal.Designer.vb">
+      <DependentUpon>Portal.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -84,26 +310,122 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Modules\WeeklyForecast.Designer.vb">
+      <DependentUpon>WeeklyForecast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\WeeklyForecast.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\PromoEditor.Designer.vb">
+      <DependentUpon>PromoEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PromoEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Modules\Admin.resx">
+      <DependentUpon>Admin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AccidentReporting.resx">
+      <DependentUpon>AccidentReporting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\CafeJournal.resx">
+      <DependentUpon>CafeJournal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\PromoEditor.resx">
+      <DependentUpon>PromoEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\PromoIDMgr.resx">
+      <DependentUpon>PromoIDMgr.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\VendorReceipts.resx">
+      <DependentUpon>VendorReceipts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WCR.resx">
+      <DependentUpon>WCR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportForms\AgnesMsgBox.resx">
+      <DependentUpon>AgnesMsgBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AVFlash.resx">
+      <DependentUpon>AVFlash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportForms\BigMedia.resx">
+      <DependentUpon>BigMedia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\BVFlash.resx">
+      <DependentUpon>BVFlash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\FlashStatus.resx">
+      <DependentUpon>FlashStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportForms\ChoosePromo.resx">
+      <DependentUpon>ChoosePromo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportForms\FlashUnitChooser.resx">
+      <DependentUpon>FlashUnitChooser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HRAudit.resx">
+      <DependentUpon>HRAudit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportForms\HRAuditNotes.resx">
+      <DependentUpon>HRAuditNotes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportForms\OperatingDaysMgr.resx">
+      <DependentUpon>OperatingDaysMgr.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\MenuEngineeringCosts.resx">
+      <DependentUpon>MenuEngineeringCosts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WasteTracking.resx">
+      <DependentUpon>WasteTracking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WeeklyFlash.resx">
+      <DependentUpon>WeeklyFlash.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Portal.resx">
+      <DependentUpon>Portal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\WeeklyForecast.resx">
+      <DependentUpon>WeeklyForecast.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DataSources\AGNESData.xsc">
+      <DependentUpon>AGNESData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSources\AGNESData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AGNESData.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSources\AGNESData.xss">
+      <DependentUpon>AGNESData.xsd</DependentUpon>
+    </None>
+    <None Include="AGNES_TemporaryKey.pfx" />
+    <None Include="DataSources\BIDataSet.xsc">
+      <DependentUpon>BIDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSources\BIDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BIDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSources\BIDataSet.xss">
+      <DependentUpon>BIDataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -114,6 +436,136 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AdminTools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agnesmsgbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AVFlash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BIGLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CafeFlash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CafeForecast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CateringLabor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldFlash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FieldForecast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlashStatus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FoodTrucks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glass_arrow_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glass_arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HRAudit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hydro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LateOrders.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuItemCOGS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Microgreens.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pill_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Policies.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\portalbackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PowerBI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Retail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WCCFlash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WCCForecast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WCR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lgportalbackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sample.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CostingBGround.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AGNES.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AGNES.ico" />
+    <None Include="Resources\Campaigns.png" />
+    <None Include="Resources\CafeJournal.png" />
+    <None Include="Resources\VendorReceipts.png" />
+    <None Include="Resources\WasteTrack.png" />
+    <None Include="Resources\BVFlash.png" />
+    <None Include="Resources\Incidents.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

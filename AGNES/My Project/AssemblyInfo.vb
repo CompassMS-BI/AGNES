@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports System.Resources
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -13,7 +14,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("AGNES")>
 <Assembly: AssemblyCopyright("Copyright ©  2017")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("All code by Brian Freeman, BI Solutions Architect")>
 
 <Assembly: ComVisible(False)>
 
@@ -31,5 +32,6 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("6.6.0.0")>
+<Assembly: AssemblyFileVersion("6.6.0.0")>
+<Assembly: NeutralResourcesLanguage("en-US")>
