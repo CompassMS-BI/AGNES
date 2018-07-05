@@ -13,7 +13,7 @@
                 Dim AccessDR() As DataRow = DataSets.FlashLocationTable.Select("Group = '" & Portal.UserGroupAccess & "'")
                 PopulateList(AccessDR)
             Case "SU", "Admin"
-                Dim AccessDR() As DataRow = DataSets.FlashLocationTable.Select("Group = '" & FlashType & "'")
+                Dim AccessDR() As DataRow = DataSets.FlashLocationTable.Select("Group = '" & FlashType & "' or Unit_Number = '32036'")
                 PopulateList(AccessDR)
         End Select
 

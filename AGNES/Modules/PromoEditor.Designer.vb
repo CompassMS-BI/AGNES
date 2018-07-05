@@ -26,7 +26,6 @@ Partial Class PromoEditor
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PromoEditor))
         Me.mstPromos = New System.Windows.Forms.MenuStrip()
         Me.tsmiFile = New System.Windows.Forms.ToolStripMenuItem()
@@ -77,7 +76,6 @@ Partial Class PromoEditor
         Me.dgvPosAssociations = New System.Windows.Forms.DataGridView()
         Me.POSID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.POSType = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodeDesc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtPromoDesc = New AGNES.PromoDesc()
         Me.mstPromos.SuspendLayout()
@@ -109,19 +107,20 @@ Partial Class PromoEditor
         'tsmiSave
         '
         Me.tsmiSave.Name = "tsmiSave"
-        Me.tsmiSave.Size = New System.Drawing.Size(107, 22)
+        Me.tsmiSave.Size = New System.Drawing.Size(152, 22)
         Me.tsmiSave.Text = "Save"
         '
         'tsmiDelete
         '
+        Me.tsmiDelete.Enabled = False
         Me.tsmiDelete.Name = "tsmiDelete"
-        Me.tsmiDelete.Size = New System.Drawing.Size(107, 22)
+        Me.tsmiDelete.Size = New System.Drawing.Size(152, 22)
         Me.tsmiDelete.Text = "Delete"
         '
         'tsmiExit
         '
         Me.tsmiExit.Name = "tsmiExit"
-        Me.tsmiExit.Size = New System.Drawing.Size(107, 22)
+        Me.tsmiExit.Size = New System.Drawing.Size(152, 22)
         Me.tsmiExit.Text = "Exit"
         '
         'tsmiEdit
@@ -523,7 +522,7 @@ Partial Class PromoEditor
         'Label12
         '
         Me.Label12.Font = New System.Drawing.Font("Segoe UI Emoji", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(8, 477)
+        Me.Label12.Location = New System.Drawing.Point(4, 482)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(778, 32)
         Me.Label12.TabIndex = 33
@@ -549,14 +548,14 @@ Partial Class PromoEditor
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvPosAssociations.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvPosAssociations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvPosAssociations.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.POSID, Me.POSType, Me.CodeDesc})
+        Me.dgvPosAssociations.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.POSID, Me.POSType})
         Me.dgvPosAssociations.Enabled = False
-        Me.dgvPosAssociations.Location = New System.Drawing.Point(9, 512)
+        Me.dgvPosAssociations.Location = New System.Drawing.Point(262, 517)
         Me.dgvPosAssociations.Name = "dgvPosAssociations"
         Me.dgvPosAssociations.ReadOnly = True
         Me.dgvPosAssociations.RowHeadersVisible = False
         Me.dgvPosAssociations.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dgvPosAssociations.Size = New System.Drawing.Size(777, 150)
+        Me.dgvPosAssociations.Size = New System.Drawing.Size(263, 150)
         Me.dgvPosAssociations.TabIndex = 34
         '
         'POSID
@@ -584,20 +583,6 @@ Partial Class PromoEditor
         Me.POSType.ReadOnly = True
         Me.POSType.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.POSType.Width = 120
-        '
-        'CodeDesc
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI Emoji", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.CodeDesc.DefaultCellStyle = DataGridViewCellStyle5
-        Me.CodeDesc.Frozen = True
-        Me.CodeDesc.HeaderText = "Description"
-        Me.CodeDesc.MaxInputLength = 256
-        Me.CodeDesc.Name = "CodeDesc"
-        Me.CodeDesc.ReadOnly = True
-        Me.CodeDesc.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CodeDesc.Width = 530
         '
         'Label13
         '
@@ -735,5 +720,4 @@ Partial Class PromoEditor
     Friend WithEvents Label13 As Label
     Friend WithEvents POSID As DataGridViewTextBoxColumn
     Friend WithEvents POSType As DataGridViewTextBoxColumn
-    Friend WithEvents CodeDesc As DataGridViewTextBoxColumn
 End Class

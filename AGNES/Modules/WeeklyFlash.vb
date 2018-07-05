@@ -17,6 +17,7 @@
     Public FlashLock As Boolean
     Public MaxPeriod As Byte
     Public MaxWeek As Byte
+    Public ToggleMaxWeek As Byte
     Public SentFromView As Boolean
     Public CurrDt As Date
     Public CallFromPTD As Boolean
@@ -288,6 +289,9 @@
         tsslWeek.Text = ""
         tsslWeek.Visible = False
         tsslInformation.Text = "Waiting for week selection"
+
+
+
     End Sub
 
     Private Sub WeekChosen(sender As Object, e As EventArgs) Handles tsmiW1.Click, tsmiW2.Click, tsmiW3.Click, tsmiW4.Click, tsmiW5.Click
@@ -376,7 +380,9 @@
         '#  If toggling to current week view, unlock the flash fields and call the recalculate routine
         '#  If toggling to PTD, lock the flash fields and call a different routine.
         '#  Drop out of routine is maxweek is 1.  No point.
-        If (MaxWeek = 1 Or ActiveWeek.Week = 1) Then Exit Sub
+        If ((MaxWeek = 1 And ActiveWeek.MSPeriod = MaxPeriod) Or ActiveWeek.Week = 1) Then Exit Sub
+
+
         Dim ptdopdays As Integer = 0
 
         If tsmiViewPTD.Text = "Return to week view" Then

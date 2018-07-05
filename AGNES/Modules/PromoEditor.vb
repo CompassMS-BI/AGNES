@@ -51,6 +51,8 @@
 
 #Region "Toolstrip Controls"
 
+    'TODO: Include control and routine to jump to POSID editor
+
     Private Sub MoveForm_MouseDown(sender As Object, e As MouseEventArgs) Handles mstPromos.MouseDown
         If e.Button = MouseButtons.Left Then
             MoveForm = True
@@ -102,6 +104,27 @@
         Dispose()
         ChoosePromo.Show()
         Exit Sub
+    End Sub
+
+    Private Sub LoadPOSIDEditor(sender As Object, e As EventArgs) Handles tsmiAddPOS.Click
+
+        If ChangesMade = True And Saved = False Then
+            Dim amsg As New AgnesMsgBox("You have unsaved data.  Are you sure that you want to exit?", 2, True, Me.Name)
+            amsg.ShowDialog()
+            ynchoice = amsg.Choicemade
+            amsg.Dispose()
+            If ynchoice = False Then Exit Sub
+        End If
+        Dim dr() As DataRow = DataSets.PromoTable.Select("PromoName = '" & txtPromoName.Text & "'")
+        Close()
+        If dr.Count > 0 Then
+            With PromoIDMgr
+                .SelectedPromoName = dr(0)("PromoName")
+                .Show()
+            End With
+        Else
+            ChoosePromo.Show()
+        End If
     End Sub
 
 #End Region
@@ -529,7 +552,7 @@
         dgvPosAssociations.Rows.Clear()
         If dr.Count = 0 Then Exit Sub
         For ct = 0 To dr.Count - 1
-            dgvPosAssociations.Rows.Add(dr(ct)("POSID"), "D", "Something")
+            dgvPosAssociations.Rows.Add(dr(ct)("POSID"), dr(ct)("POSType"))
         Next
         dgvPosAssociations.ClearSelection()
     End Sub

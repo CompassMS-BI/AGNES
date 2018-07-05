@@ -68,6 +68,8 @@
     Public Shared VendorTransAdapt As New AGNESDataTableAdapters.VendorTransactionsTableAdapter
     Public Shared TenderTable As New AGNESData.TenderTypesDataTable
     Public Shared TenderAdapt As New AGNESDataTableAdapters.TenderTypesTableAdapter
+    Public Shared TruckLocTable As New AGNESData.TruckLocationsDataTable
+    Public Shared TruckLocAdapt As New AGNESDataTableAdapters.TruckLocationsTableAdapter
 
     '////   Marketing Promotions Module Data Set
     Protected Friend Shared PromoTable As New AGNESData.PromotionsDataTable

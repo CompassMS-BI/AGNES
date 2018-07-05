@@ -32,8 +32,7 @@ Partial Class CafeJournal
         Me.tsslUnit = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsslInformation = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsslSaveStatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.dtpJournalDate = New System.Windows.Forms.DateTimePicker()
-        Me.txtJournalText = New AGNES.AgnesTxt()
+        Me.dtpJournalStartDate = New System.Windows.Forms.DateTimePicker()
         Me.cbxEventCat = New System.Windows.Forms.ComboBox()
         Me.mstJournal = New System.Windows.Forms.MenuStrip()
         Me.tsmiFile = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,15 +41,21 @@ Partial Class CafeJournal
         Me.tsmiEdit = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiClear = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiDelete = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblJournalText = New System.Windows.Forms.Label()
+        Me.lblEventStart = New System.Windows.Forms.Label()
+        Me.lblEventCat = New System.Windows.Forms.Label()
         Me.lblDGVEntries = New System.Windows.Forms.Label()
         Me.dgvEntryList = New System.Windows.Forms.DataGridView()
         Me.colPID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colDt = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Unum = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colCAT = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colDetail = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lblEventEnd = New System.Windows.Forms.Label()
+        Me.dtpJournalEndDate = New System.Windows.Forms.DateTimePicker()
+        Me.lbxUnits = New System.Windows.Forms.ListBox()
+        Me.lblUnitSelection = New System.Windows.Forms.Label()
+        Me.txtJournalText = New AGNES.AgnesTxt()
         Me.sstJournal.SuspendLayout()
         Me.mstJournal.SuspendLayout()
         CType(Me.dgvEntryList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +67,7 @@ Partial Class CafeJournal
         Me.sstJournal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsslUser, Me.tsslUnit, Me.tsslInformation, Me.tsslSaveStatus})
         Me.sstJournal.Location = New System.Drawing.Point(0, 424)
         Me.sstJournal.Name = "sstJournal"
-        Me.sstJournal.Size = New System.Drawing.Size(598, 24)
+        Me.sstJournal.Size = New System.Drawing.Size(718, 24)
         Me.sstJournal.SizingGrip = False
         Me.sstJournal.TabIndex = 2
         Me.sstJournal.Text = "StatusStrip1"
@@ -94,7 +99,7 @@ Partial Class CafeJournal
             Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
         Me.tsslInformation.BorderStyle = System.Windows.Forms.Border3DStyle.Bump
         Me.tsslInformation.Name = "tsslInformation"
-        Me.tsslInformation.Size = New System.Drawing.Size(516, 19)
+        Me.tsslInformation.Size = New System.Drawing.Size(636, 19)
         Me.tsslInformation.Spring = True
         '
         'tsslSaveStatus
@@ -108,34 +113,26 @@ Partial Class CafeJournal
         Me.tsslSaveStatus.Text = "SaveStatus"
         Me.tsslSaveStatus.Visible = False
         '
-        'dtpJournalDate
+        'dtpJournalStartDate
         '
-        Me.dtpJournalDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpJournalDate.Location = New System.Drawing.Point(12, 47)
-        Me.dtpJournalDate.MaxDate = New Date(2020, 12, 31, 0, 0, 0, 0)
-        Me.dtpJournalDate.MinDate = New Date(2017, 12, 4, 0, 0, 0, 0)
-        Me.dtpJournalDate.Name = "dtpJournalDate"
-        Me.dtpJournalDate.Size = New System.Drawing.Size(113, 25)
-        Me.dtpJournalDate.TabIndex = 0
-        '
-        'txtJournalText
-        '
-        Me.txtJournalText.Enabled = False
-        Me.txtJournalText.Location = New System.Drawing.Point(11, 98)
-        Me.txtJournalText.MaxLength = 1024
-        Me.txtJournalText.Multiline = True
-        Me.txtJournalText.Name = "txtJournalText"
-        Me.txtJournalText.Size = New System.Drawing.Size(573, 208)
-        Me.txtJournalText.TabIndex = 2
+        Me.dtpJournalStartDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpJournalStartDate.Location = New System.Drawing.Point(12, 47)
+        Me.dtpJournalStartDate.MaxDate = New Date(2020, 12, 31, 0, 0, 0, 0)
+        Me.dtpJournalStartDate.MinDate = New Date(2017, 12, 4, 0, 0, 0, 0)
+        Me.dtpJournalStartDate.Name = "dtpJournalStartDate"
+        Me.dtpJournalStartDate.Size = New System.Drawing.Size(113, 25)
+        Me.dtpJournalStartDate.TabIndex = 0
         '
         'cbxEventCat
         '
+        Me.cbxEventCat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbxEventCat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbxEventCat.FormattingEnabled = True
-        Me.cbxEventCat.Items.AddRange(New Object() {"Equipment", "Event/Meeting", "Facilities", "Staffing", "Technology", "Training", "Other"})
-        Me.cbxEventCat.Location = New System.Drawing.Point(161, 47)
+        Me.cbxEventCat.Items.AddRange(New Object() {"Concept Change", "Equipment", "Event/Meeting", "Facilities", "Local Brands", "Staffing", "Technology", "Training", "Weather", "Other"})
+        Me.cbxEventCat.Location = New System.Drawing.Point(282, 47)
         Me.cbxEventCat.Name = "cbxEventCat"
-        Me.cbxEventCat.Size = New System.Drawing.Size(424, 25)
-        Me.cbxEventCat.TabIndex = 1
+        Me.cbxEventCat.Size = New System.Drawing.Size(278, 25)
+        Me.cbxEventCat.TabIndex = 2
         '
         'mstJournal
         '
@@ -143,7 +140,7 @@ Partial Class CafeJournal
         Me.mstJournal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiFile, Me.tsmiEdit})
         Me.mstJournal.Location = New System.Drawing.Point(0, 0)
         Me.mstJournal.Name = "mstJournal"
-        Me.mstJournal.Size = New System.Drawing.Size(598, 24)
+        Me.mstJournal.Size = New System.Drawing.Size(718, 24)
         Me.mstJournal.TabIndex = 8
         Me.mstJournal.Text = "MenuStrip1"
         '
@@ -158,13 +155,13 @@ Partial Class CafeJournal
         '
         Me.tsmiSave.Enabled = False
         Me.tsmiSave.Name = "tsmiSave"
-        Me.tsmiSave.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiSave.Size = New System.Drawing.Size(98, 22)
         Me.tsmiSave.Text = "Save"
         '
         'tsmiExit
         '
         Me.tsmiExit.Name = "tsmiExit"
-        Me.tsmiExit.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiExit.Size = New System.Drawing.Size(98, 22)
         Me.tsmiExit.Text = "Exit"
         '
         'tsmiEdit
@@ -187,42 +184,42 @@ Partial Class CafeJournal
         Me.tsmiDelete.Text = "Delete Entry"
         Me.tsmiDelete.Visible = False
         '
-        'Label1
+        'lblJournalText
         '
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 75)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(573, 20)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Event Detail Journal Entry"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.lblJournalText.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblJournalText.Location = New System.Drawing.Point(12, 114)
+        Me.lblJournalText.Name = "lblJournalText"
+        Me.lblJournalText.Size = New System.Drawing.Size(695, 20)
+        Me.lblJournalText.TabIndex = 10
+        Me.lblJournalText.Text = "Event Detail Journal Entry"
+        Me.lblJournalText.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'Label2
+        'lblEventStart
         '
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 24)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(115, 20)
-        Me.Label2.TabIndex = 11
-        Me.Label2.Text = "Event Date"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.lblEventStart.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEventStart.Location = New System.Drawing.Point(10, 24)
+        Me.lblEventStart.Name = "lblEventStart"
+        Me.lblEventStart.Size = New System.Drawing.Size(115, 20)
+        Me.lblEventStart.TabIndex = 11
+        Me.lblEventStart.Text = "Event Start"
+        Me.lblEventStart.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'Label3
+        'lblEventCat
         '
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(158, 24)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(427, 20)
-        Me.Label3.TabIndex = 12
-        Me.Label3.Text = "Event Category"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.lblEventCat.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEventCat.Location = New System.Drawing.Point(281, 24)
+        Me.lblEventCat.Name = "lblEventCat"
+        Me.lblEventCat.Size = New System.Drawing.Size(279, 20)
+        Me.lblEventCat.TabIndex = 12
+        Me.lblEventCat.Text = "Event Category"
+        Me.lblEventCat.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'lblDGVEntries
         '
         Me.lblDGVEntries.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDGVEntries.Location = New System.Drawing.Point(12, 309)
+        Me.lblDGVEntries.Location = New System.Drawing.Point(11, 275)
         Me.lblDGVEntries.Name = "lblDGVEntries"
-        Me.lblDGVEntries.Size = New System.Drawing.Size(574, 20)
+        Me.lblDGVEntries.Size = New System.Drawing.Size(696, 20)
         Me.lblDGVEntries.TabIndex = 13
         Me.lblDGVEntries.Text = "Other Entries for Selected Date"
         Me.lblDGVEntries.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -243,18 +240,21 @@ Partial Class CafeJournal
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvEntryList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvEntryList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvEntryList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colPID, Me.colDt, Me.colCAT, Me.colDetail})
-        Me.dgvEntryList.Location = New System.Drawing.Point(11, 333)
+        Me.dgvEntryList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colPID, Me.colDt, Me.Unum, Me.colCAT, Me.colDetail})
+        Me.dgvEntryList.Location = New System.Drawing.Point(11, 298)
+        Me.dgvEntryList.MultiSelect = False
         Me.dgvEntryList.Name = "dgvEntryList"
         Me.dgvEntryList.ReadOnly = True
         Me.dgvEntryList.RowHeadersVisible = False
         Me.dgvEntryList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dgvEntryList.Size = New System.Drawing.Size(573, 88)
+        Me.dgvEntryList.Size = New System.Drawing.Size(707, 123)
         Me.dgvEntryList.TabIndex = 14
+        Me.dgvEntryList.TabStop = False
         Me.dgvEntryList.Visible = False
         '
         'colPID
         '
+        Me.colPID.Frozen = True
         Me.colPID.HeaderText = "PID"
         Me.colPID.MaxInputLength = 16
         Me.colPID.Name = "colPID"
@@ -273,6 +273,15 @@ Partial Class CafeJournal
         Me.colDt.ReadOnly = True
         Me.colDt.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colDt.Width = 80
+        '
+        'Unum
+        '
+        Me.Unum.HeaderText = "Unit"
+        Me.Unum.MaxInputLength = 12
+        Me.Unum.Name = "Unum"
+        Me.Unum.ReadOnly = True
+        Me.Unum.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Unum.Width = 60
         '
         'colCAT
         '
@@ -295,23 +304,78 @@ Partial Class CafeJournal
         Me.colDetail.MaxInputLength = 1024
         Me.colDetail.Name = "colDetail"
         Me.colDetail.ReadOnly = True
-        Me.colDetail.Width = 400
+        Me.colDetail.Width = 420
+        '
+        'lblEventEnd
+        '
+        Me.lblEventEnd.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEventEnd.Location = New System.Drawing.Point(145, 24)
+        Me.lblEventEnd.Name = "lblEventEnd"
+        Me.lblEventEnd.Size = New System.Drawing.Size(115, 20)
+        Me.lblEventEnd.TabIndex = 16
+        Me.lblEventEnd.Text = "Event End"
+        Me.lblEventEnd.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'dtpJournalEndDate
+        '
+        Me.dtpJournalEndDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpJournalEndDate.Location = New System.Drawing.Point(147, 47)
+        Me.dtpJournalEndDate.MaxDate = New Date(2020, 12, 31, 0, 0, 0, 0)
+        Me.dtpJournalEndDate.MinDate = New Date(2017, 12, 4, 0, 0, 0, 0)
+        Me.dtpJournalEndDate.Name = "dtpJournalEndDate"
+        Me.dtpJournalEndDate.Size = New System.Drawing.Size(113, 25)
+        Me.dtpJournalEndDate.TabIndex = 1
+        '
+        'lbxUnits
+        '
+        Me.lbxUnits.Font = New System.Drawing.Font("Segoe UI Emoji", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbxUnits.FormattingEnabled = True
+        Me.lbxUnits.ItemHeight = 15
+        Me.lbxUnits.Location = New System.Drawing.Point(566, 47)
+        Me.lbxUnits.Name = "lbxUnits"
+        Me.lbxUnits.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
+        Me.lbxUnits.Size = New System.Drawing.Size(140, 64)
+        Me.lbxUnits.TabIndex = 17
+        '
+        'lblUnitSelection
+        '
+        Me.lblUnitSelection.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUnitSelection.Location = New System.Drawing.Point(563, 24)
+        Me.lblUnitSelection.Name = "lblUnitSelection"
+        Me.lblUnitSelection.Size = New System.Drawing.Size(143, 20)
+        Me.lblUnitSelection.TabIndex = 18
+        Me.lblUnitSelection.Text = "Unit Selection"
+        Me.lblUnitSelection.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'txtJournalText
+        '
+        Me.txtJournalText.Enabled = False
+        Me.txtJournalText.Location = New System.Drawing.Point(12, 137)
+        Me.txtJournalText.MaxLength = 1024
+        Me.txtJournalText.Multiline = True
+        Me.txtJournalText.Name = "txtJournalText"
+        Me.txtJournalText.Size = New System.Drawing.Size(695, 135)
+        Me.txtJournalText.TabIndex = 3
         '
         'CafeJournal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.OldLace
-        Me.ClientSize = New System.Drawing.Size(598, 448)
+        Me.ClientSize = New System.Drawing.Size(718, 448)
         Me.ControlBox = False
+        Me.Controls.Add(Me.lblUnitSelection)
+        Me.Controls.Add(Me.lbxUnits)
+        Me.Controls.Add(Me.lblEventEnd)
+        Me.Controls.Add(Me.dtpJournalEndDate)
         Me.Controls.Add(Me.dgvEntryList)
         Me.Controls.Add(Me.lblDGVEntries)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblEventCat)
+        Me.Controls.Add(Me.lblEventStart)
+        Me.Controls.Add(Me.lblJournalText)
         Me.Controls.Add(Me.cbxEventCat)
         Me.Controls.Add(Me.txtJournalText)
-        Me.Controls.Add(Me.dtpJournalDate)
+        Me.Controls.Add(Me.dtpJournalStartDate)
         Me.Controls.Add(Me.sstJournal)
         Me.Controls.Add(Me.mstJournal)
         Me.Font = New System.Drawing.Font("Segoe UI Emoji", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -319,7 +383,7 @@ Partial Class CafeJournal
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.mstJournal
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.MaximumSize = New System.Drawing.Size(600, 450)
+        Me.MaximumSize = New System.Drawing.Size(720, 450)
         Me.MinimumSize = New System.Drawing.Size(600, 450)
         Me.Name = "CafeJournal"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
@@ -338,7 +402,7 @@ Partial Class CafeJournal
     Friend WithEvents tsslUser As ToolStripStatusLabel
     Friend WithEvents tsslInformation As ToolStripStatusLabel
     Friend WithEvents tsslSaveStatus As ToolStripStatusLabel
-    Friend WithEvents dtpJournalDate As DateTimePicker
+    Friend WithEvents dtpJournalStartDate As DateTimePicker
     Friend WithEvents txtJournalText As AgnesTxt
     Friend WithEvents cbxEventCat As ComboBox
     Friend WithEvents mstJournal As MenuStrip
@@ -346,16 +410,21 @@ Partial Class CafeJournal
     Friend WithEvents tsmiSave As ToolStripMenuItem
     Friend WithEvents tsmiExit As ToolStripMenuItem
     Friend WithEvents tsmiEdit As ToolStripMenuItem
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblJournalText As Label
+    Friend WithEvents lblEventStart As Label
+    Friend WithEvents lblEventCat As Label
     Friend WithEvents lblDGVEntries As Label
     Friend WithEvents tsslUnit As ToolStripStatusLabel
     Friend WithEvents tsmiClear As ToolStripMenuItem
     Friend WithEvents tsmiDelete As ToolStripMenuItem
     Friend WithEvents dgvEntryList As DataGridView
+    Friend WithEvents lblEventEnd As Label
+    Friend WithEvents dtpJournalEndDate As DateTimePicker
+    Friend WithEvents lbxUnits As ListBox
+    Friend WithEvents lblUnitSelection As Label
     Friend WithEvents colPID As DataGridViewTextBoxColumn
     Friend WithEvents colDt As DataGridViewTextBoxColumn
+    Friend WithEvents Unum As DataGridViewTextBoxColumn
     Friend WithEvents colCAT As DataGridViewTextBoxColumn
     Friend WithEvents colDetail As DataGridViewTextBoxColumn
 End Class

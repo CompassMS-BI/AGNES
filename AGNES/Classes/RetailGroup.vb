@@ -34,15 +34,16 @@
                 VendorTxt.Width = 200
                 CountTxt.Enabled = False
                 SalesTxt.Enabled = False
-                Dim LocationCombo As New ComboBox With {.Left = 205, .Top = 5, .Height = 25, .Width = 110, .Name = "cbxLocation", .Font = New Drawing.Font("Segoe UI Emoji", 10, FontStyle.Regular), .Enabled = True, .TabIndex = 0, .AutoCompleteMode = AutoCompleteMode.Suggest}
+                Dim LocationCombo As New ComboBox With {.Left = 205, .Top = 5, .Height = 25, .Width = 110, .Name = "cbxLocation", .Font = New Drawing.Font("Segoe UI Emoji", 10, FontStyle.Regular), .Enabled = True, .TabIndex = 0, .AutoCompleteMode = AutoCompleteMode.Suggest, .AutoCompleteSource = AutoCompleteSource.ListItems}
 
-                '###    ADD ROUTINE TO TIE TO RACHEL'S SCHEDULE AND ONLY DISPLAY LOCATIONS SCHEDULED FOR THE SELECTED DAY AND TRUCK
+                'TODO:    Tie locations to Vendor Manager's schedule module (pending)
+                ' For now, pull distinct locations from transaction records
+                DataSets.TruckLocAdapt.Fill(DataSets.TruckLocTable)
 
-                LocationCombo.Items.Add("110/Studio X")
-                LocationCombo.Items.Add("Willows")
-                LocationCombo.Items.Add("Cafe 92")
-                LocationCombo.Items.Add("Redwest")
-                LocationCombo.Items.Add("Building 36")
+
+                For ct = 0 To DataSets.TruckLocTable.Rows.Count - 1
+                    LocationCombo.Items.Add(DataSets.TruckLocTable.Rows(ct)("LocationName"))
+                Next
 
                 Controls.Add(LocationCombo)
                 AddHandler LocationCombo.GotFocus, AddressOf DisplayInfo
@@ -106,15 +107,44 @@
             Exit Sub
         End If
         If s.Text <> "" And s.SelectedIndex = -1 Then
+            For ct = 0 To s.Items.Count - 1
+                If s.Items(ct) = s.Text Then
+                    s.SelectedIndex = ct
+                    Exit Sub
+                End If
+            Next
+
             Dim amsg As New AgnesMsgBox("Did you want to add " & s.Text & " as a new location?", 2, True, "RetailGroup")
             amsg.ShowDialog()
             Dim ynchoice As Boolean = amsg.Choicemade
             amsg.Dispose()
-            If ynchoice = False Then Exit Sub
+            If ynchoice = False Then
+                With s
+                    .Text = ""
+                    .Focus()
+                End With
+                Exit Sub
+            End If
+            Dim pcid As Integer
+            Try
+                pcid = InputBox("Please enter profit center ID. If you do not know the profit center, please contact Finance before proceeding.", "New location profit center ID", "999")
+            Catch ex As Exception
+                pcid = 999
+            End Try
+            Dim newdr As DataRow = DataSets.TruckLocTable.NewRow
+            newdr(1) = s.Text
+            newdr(2) = pcid
+            DataSets.TruckLocTable.AddTruckLocationsRow(newdr)
+
+            DataSets.TruckLocAdapt.Update(DataSets.TruckLocTable)
             Controls("txtSales").Enabled = True
             Controls("txtCounts").Enabled = True
+            Dim txt As TextBox = Controls("txtSales")
+            With txt
+                .Focus()
+                .SelectAll()
+            End With
 
-            '#  ROUTINE TO INVOKE LOCATION EDITOR FOR TRUCKS
 
         Else
             FetchSavedData()
@@ -146,6 +176,11 @@
                     Controls("txtCounts").Text = "0"
                     Controls("txtSales").Enabled = True
                     Controls("txtCounts").Enabled = True
+                    Dim txt As TextBox = Controls("txtSales")
+                    With txt
+                        .Focus()
+                        .SelectAll()
+                    End With
                     Extant = False
                 Else
                     Controls("txtSales").Text = FormatCurrency(dr(0)("Sales"), 0)

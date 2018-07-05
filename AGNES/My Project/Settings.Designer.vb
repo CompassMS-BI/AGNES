@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -57,19 +57,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=CompassPowerBI;Initial Catalog=AGNES;Persist Security Info=True;User "& _ 
-            "ID=AGNESapplication;Password=S1l3nu52018!")>  _
-        Public ReadOnly Property AGNESConnectionString() As String
-            Get
-                Return CType(Me("AGNESConnectionString"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=CompassPowerBI;Initial Catalog=BI;Persist Security Info=True;User ID="& _ 
-            "AGNESapplication;Password=S1l3nu52018!")>  _
+            "AGNESapplication;Password=Fluoxetine3!")>  _
         Public ReadOnly Property BIConnectionString() As String
             Get
                 Return CType(Me("BIConnectionString"),String)
@@ -98,6 +87,17 @@ Namespace My
             Set
                 Me("LastMedia") = value
             End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=CompassPowerBI;Initial Catalog=AGNES;Persist Security Info=True;User "& _ 
+            "ID=AGNESapplication;Password=Fluoxetine3!")>  _
+        Public ReadOnly Property AGNESConnectionString() As String
+            Get
+                Return CType(Me("AGNESConnectionString"),String)
+            End Get
         End Property
     End Class
 End Namespace

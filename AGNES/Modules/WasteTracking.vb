@@ -107,6 +107,7 @@ Public Class WasteTracking
         tsmiWeek.week = week
         tsslFY.Text = FY
         Datasaved = True
+        EnableMSPOptions()
     End Sub
 
 #End Region
@@ -224,10 +225,16 @@ Public Class WasteTracking
 #End Region
 
 #Region "Functions"
-
-
-
-
+    Private Sub EnableMSPOptions()
+        For ct = 0 To period - 1
+            tsmiMSP.DropDownItems.Item(ct).Enabled = True
+        Next
+        If period < 12 Then
+            For ct = period To 11
+                tsmiMSP.DropDownItems.Item(ct).Enabled = False
+            Next
+        End If
+    End Sub
     Private Sub ShowStationAnalytics(tf)
         panCampus.Visible = tf
         panPerCheck.Visible = tf
@@ -436,6 +443,7 @@ Public Class WasteTracking
 
         ' Dim legends1 As Legend = Me.chrtRegisterAvailability.Legends.Add("Legends1")
     End Sub
+
 #End Region
 
 End Class

@@ -19,12 +19,14 @@ Public Class ChoosePromo
         Dim dr() As DataRow = DataSets.UsersTable.Select("Username = '" & Portal.UserName & "'")
         UserName = dr(0)("Shortname")
         ConstructPromos()
-        If UserName = "Lawrence" Then
-            tsmiAssignPOS.Enabled = True
-            tsmiClone.Enabled = False
-            lblGreet.Text = "Hi, " & un & ".  Select a promotion to view or manage POS IDs!"
-            PromoEditor.POSEditor = True
-        End If
+        Select Case UserName
+            Case "Lawrence", "Brian"
+                tsmiAssignPOS.Enabled = True
+                tsmiClone.Enabled = False
+                lblGreet.Text = "Hi, " & un & ".  Select a promotion to view or manage POS IDs!"
+                PromoEditor.POSEditor = True
+            Case Else
+        End Select
     End Sub
 
     Private Sub ConstructPromos()
@@ -81,10 +83,15 @@ Public Class ChoosePromo
     End Sub
 
     Private Sub AssignPOSIds_Click(sender As Object, e As EventArgs) Handles tsmiAssignPOS.Click
-        'TODO: Include routine to jump to POSID editor
+        Close()
+        With PromoIDMgr
+            .SelectedPromoName = CMSControl.Text
+            .Show()
+        End With
     End Sub
 
     Private Sub cmsPromoChoice_Opening(sender As Object, e As CancelEventArgs) Handles cmsPromoChoice.Opening
         CMSControl = cmsPromoChoice.SourceControl
     End Sub
+
 End Class

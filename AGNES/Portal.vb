@@ -20,7 +20,7 @@ Public Class Portal
         '#      Check for networks connection
         Dim connected As Boolean = False
 
-        ' UserID = "v-eddgua"      ' Enable and define this to "impersonate" another user for testing
+        ' UserID = "v-rolagu"      ' Enable and define this to "impersonate" another user for testing
 
         Try
             DataSets.UsersAdapt.Fill(DataSets.UsersTable)
@@ -33,8 +33,9 @@ Public Class Portal
 
         Finally
             If connected = False Then
+
                 Dim a As New AgnesMsgBox("Unable To connect To the database.  Make sure that you're online and try opening AGNES again." &
-    vbCr & vbCr & "If the problem persists, contact the BI dept.", 2, False, Me.Name)
+vbCr & vbCr & "If the problem persists, contact the BI dept with this information:" & vbCr & Err.Description, 2, False, Me.Name)
                 a.ShowDialog()
                 a.Dispose()
 
@@ -50,6 +51,7 @@ Public Class Portal
 
         '///    Get user identity and permissions
         getUserName()
+        getannouncements()
         GetAvailableItems()
         gettipoftheday()
         Dim SystemInformation As String = "Version " & Application.ProductVersion & vbCr & "Current User: " & UserName & vbCr & "Access Level: " & UserLevel
@@ -450,9 +452,13 @@ Public Class Portal
                 'End With
 
             Case "WCR"
-                If Muted = False Then Synth.SpeakAsync("Done and done!")
-                Hide()
-                WCR.Show()
+                Dim a As New AgnesMsgBox(vbCr & "Under construction. Please use my previous version!", 2, False, Me.Name)
+                a.ShowDialog()
+                a.Dispose()
+
+                'If Muted = False Then Synth.SpeakAsync("Done and done!")
+                'Hide()
+                'WCR.Show()
 
             Case "Vendor Receipts"
                 If Muted = False Then Synth.SpeakAsync("I'm ready if YU are!")
@@ -536,15 +542,19 @@ Public Class Portal
             pbxGIFAnnouncement.Image = Nothing
             pbxGIFAnnouncement.Visible = False
         End Try
-
+        lblAnnouncements.BackColor = Color.LemonChiffon
         Dim announcecount As Byte, announcements As String = "No announcements today", announceDR() As DataRow = DataSets.AnnounceTable.Select("AnnouncementDate <='" & Now().ToShortDateString & "' and Void = False")
         If announceDR.Count > 0 Then
+            lblAnnouncements.BackColor = Color.Aqua
             announcements = ""
             For announcecount = 1 To announceDR.Count
                 announcements = announcements & announceDR(announcecount - 1)("Text") & vbCr
                 If announceDR(announcecount - 1)("Image") = True Then
+                    Dim fileloc As String = announceDR(announcecount - 1)("ImageLocation")
+                    Dim tClient As System.Net.WebClient = New System.Net.WebClient
+                    Dim tImage As Bitmap = Bitmap.FromStream(New System.IO.MemoryStream(tClient.DownloadData(fileloc)))
                     With pbxGIFAnnouncement
-                        .Image = Image.FromFile(announceDR(announcecount - 1)("ImageLocation"))
+                        .Image = tImage
                         .SizeMode = PictureBoxSizeMode.Zoom
                         .Visible = True
                     End With

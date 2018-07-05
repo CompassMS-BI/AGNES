@@ -333,7 +333,7 @@
         '#  Determine budget cycle to retrieve, based on calendar month, converted to MS period equivalent
         Dim cycle As Byte
         Select Case Month(Today)
-            Case < 3
+            Case < 4
                 cycle = 3
             Case < 7
                 cycle = 4
