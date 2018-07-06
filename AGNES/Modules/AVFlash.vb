@@ -357,12 +357,14 @@
         systemchange = False
     End Sub
     Private Function GetCycle()
-        Dim c As Integer
-        For c = 4 To 1 Step -1
-            Dim dr() As DataRow = DataSets.BudgetTable.Select("Unit = '" & AVUnit & "' and Cycle = '" & c & "'")
-            If dr.Count > 0 Then Exit For
-        Next
-        Return c
+        Return 1
+        'TODO: 7/2018: Fix cycle capture on AV Flash
+        'Dim c As Integer
+        'For c = 4 To 1 Step -1
+        '    Dim dr() As DataRow = DataSets.BudgetTable.Select("Unit = '" & AVUnit & "' and Cycle = '" & c & "'")
+        '    If dr.Count > 0 Then Exit For
+        'Next
+        'Return c
     End Function
 
     Public Sub CalcFlashTotal()

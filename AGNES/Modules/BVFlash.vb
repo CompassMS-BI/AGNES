@@ -466,7 +466,12 @@
         Controls("LABOR").Enabled = lu
         Controls("OPEX").Enabled = lu
         Controls("FEES").Enabled = lu
-        If unit <> 5109 Then Controls("SALES").Enabled = False
+        Select Case unit
+            Case 2627, 5109
+                Controls("SALES").Enabled = True
+            Case Else
+                Controls("SALES").Enabled = False
+        End Select
     End Sub
 
     Private Sub LockUnlockMenu(ty, lu)
@@ -500,7 +505,7 @@
         tsslUnit.Visible = True
         tsmiobj.BackColor = Color.SpringGreen
         tsmiBevRollup.Enabled = (unit = 2627)
-        If unit = 5109 Then
+        If unit = 5109 Or unit = 2627 Then
             Controls("SALES").Enabled = True
             Controls("SALES").Controls("FlashField").Select()
         Else
@@ -585,7 +590,7 @@
             End Try
         Next
 
-        If unit = 5109 Then Controls("SALES").Controls("FlashField").Text = FormatCurrency(s, 2)
+        If unit = 5109 Or unit = 2627 Then Controls("SALES").Controls("FlashField").Text = FormatCurrency(s, 2)
         Controls("COGS").Controls("FlashField").Text = FormatCurrency(c, 2)
         Controls("LABOR").Controls("FlashField").Text = FormatCurrency(l, 2)
         Controls("OPEX").Controls("FlashField").Text = FormatCurrency(o, 2)
@@ -621,7 +626,7 @@
             Try
                 dr = DataSets.BudgetTable.Select("BudgetKey = '" & unit & "-Sales Tax-" & FY & "-" & MSP & "' and Cycle = '" & cycle & "'")
                 Controls("SALES").Controls("BudgetField").Text = FormatCurrency(((dr(0)("Budget") / NumWks) * ptdm), 2)
-                Controls("SALES").Controls("FlashField").Text = FormatCurrency(((dr(0)("Budget") / NumWks) * ptdm), 2)
+                'Controls("SALES").Controls("FlashField").Text = FormatCurrency(((dr(0)("Budget") / NumWks) * ptdm), 2)
                 Controls("SALESLABEL").Text = "Sales Tax"
             Catch ex As Exception
                 Controls("SALES").Controls("BudgetField").Text = FormatCurrency(0, 2)
@@ -665,12 +670,13 @@
     End Sub
 
     Private Function GetCycle()
-        Dim c As Integer
-        For c = 4 To 1 Step -1
-            Dim dr() As DataRow = DataSets.BudgetTable.Select("Unit = '" & unit & "' and Cycle = '" & c & "'")
-            If dr.Count > 0 Then Exit For
-        Next
-        Return c
+        'TODO: 7/2018: Fix cycle capture on Bev Flash
+        'Dim c As Integer
+        'For c = 4 To 1 Step -1
+        '    Dim dr() As DataRow = DataSets.BudgetTable.Select("Unit = '" & unit & "' and Cycle = '" & c & "'")
+        '    If dr.Count > 0 Then Exit For
+        'Next
+        Return 1
     End Function
 
     Public Sub CalcFlashTotal()
@@ -813,7 +819,7 @@
                     dr("Unit") = unit
                     dr("Status") = "Flash"
                     dr("GL") = 0
-                    dr("GL_Category") = "Sales Tax"
+                    dr("GL_Category") = "SALES"
                     dr("FlashValue") = FormatNumber(Controls("SALES").Controls("FlashField").Text, 2)
                     If Controls("SALES").Controls("Notes").Text <> "Add notes here" Then
                         dr("FlashNotes") = Controls("SALES").Controls("Notes").Text

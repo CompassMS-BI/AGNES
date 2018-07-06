@@ -4,7 +4,7 @@ Imports AxWMPLib
 
 Public Class Portal
     Friend UserID As String = Environment.UserName
-    Friend FiscalYear = 2018
+    Friend FiscalYear = 2019
     Friend UserName As String
     Friend ShortName As String
     Friend UserLevel As String
