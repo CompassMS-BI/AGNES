@@ -387,7 +387,7 @@
         '/  Create sales/sales tax group and label
         Dim SalesGroup As New FlashGroup With
     {.Left = 72, .Top = 60, .Width = 865, .Height = 112, .FlashIsStatic = False, .IsRevenueBlock = True, .ExcludeFromSubsidy = False,
-    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "SALES"}
+    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "SALES", .AllowAllValues = True}
 
         Dim SalesLabel As New Label With
             {.TextAlign = ContentAlignment.MiddleCenter, .Left = 1, .Top = 60, .Width = 70, .Height = 112, .Text = "Sales", .Font = New Drawing.Font("Segoe UI Emoji", 11, FontStyle.Regular), .Name = "SALESLABEL"}
@@ -466,12 +466,6 @@
         Controls("LABOR").Enabled = lu
         Controls("OPEX").Enabled = lu
         Controls("FEES").Enabled = lu
-        Select Case unit
-            Case 2627, 5109
-                Controls("SALES").Enabled = True
-            Case Else
-                Controls("SALES").Enabled = False
-        End Select
     End Sub
 
     Private Sub LockUnlockMenu(ty, lu)
@@ -505,7 +499,7 @@
         tsslUnit.Visible = True
         tsmiobj.BackColor = Color.SpringGreen
         tsmiBevRollup.Enabled = (unit = 2627)
-        If unit = 5109 Or unit = 2627 Then
+        If SavedFlash = False And (unit = 5109 Or unit = 2627) Then
             Controls("SALES").Enabled = True
             Controls("SALES").Controls("FlashField").Select()
         Else
@@ -529,18 +523,32 @@
     Private Sub GetFlash(StWk, EndWk)
         Dim s As Double = 0, c As Double = 0, l As Double = 0, o As Double = 0, f As Double = 0, w As Byte, dr() As DataRow
         For w = StWk To EndWk
-            Try
-                dr = DataSets.FlashTable.Select("FlashID = '" & FY & "-" & MSP & "-" & w & "-" & unit & "-0-SALES'")
-                s = s + FormatNumber(dr(0)("FlashValue"), 2)
-                Controls("SALES").Controls("Notes").Text = dr(0)("FlashNotes")
-                ChangesMade = False
-                SavedFlash = True
-                tsslSaveStatus.Text = "Saved Flash"
-            Catch ex As Exception
-                ChangesMade = False
-                SavedFlash = False
-            End Try
+            If unit = 2627 Then
+                Try
+                    dr = DataSets.FlashTable.Select("FlashID = '" & FY & "-" & MSP & "-" & w & "-" & unit & "-0-Sales Tax'")
+                    s = s + FormatNumber(dr(0)("FlashValue"), 2)
+                    Controls("SALES").Controls("Notes").Text = dr(0)("FlashNotes")
+                    ChangesMade = False
+                    SavedFlash = True
+                    tsslSaveStatus.Text = "Saved Flash"
+                Catch ex As Exception
+                    ChangesMade = False
+                    SavedFlash = False
+                End Try
+            Else
 
+                Try
+                    dr = DataSets.FlashTable.Select("FlashID = '" & FY & "-" & MSP & "-" & w & "-" & unit & "-0-SALES'")
+                    s = s + FormatNumber(dr(0)("FlashValue"), 2)
+                    Controls("SALES").Controls("Notes").Text = dr(0)("FlashNotes")
+                    ChangesMade = False
+                    SavedFlash = True
+                    tsslSaveStatus.Text = "Saved Flash"
+                Catch ex As Exception
+                    ChangesMade = False
+                    SavedFlash = False
+                End Try
+            End If
             Try
                 dr = DataSets.FlashTable.Select("FlashID = '" & FY & "-" & MSP & "-" & w & "-" & unit & "-0-COGS'")
                 c = c + FormatNumber(dr(0)("FlashValue"), 2)
@@ -728,7 +736,7 @@
                 End If
 
                 If unit = 2627 Then
-                    dr = DataSets.FlashTable.Select("FlashID = '" & baseflashkey & "SALES'")
+                    dr = DataSets.FlashTable.Select("FlashID = '" & baseflashkey & "Sales Tax'")
                     dr(0)("FlashValue") = FormatNumber(Controls("SALES").Controls("FlashField").Text, 2)    '# Overwrite flash value for revenue
                     If Controls("SALES").Controls("Notes").Text <> "Add notes here" Then
                         dr(0)("FlashNotes") = Controls("SALES").Controls("Notes").Text
@@ -812,14 +820,14 @@
 
                 If unit = 2627 Then
                     Dim dr As DataRow = DataSets.FlashTable.NewRow()
-                    dr("FlashID") = baseflashkey & "SALES"
+                    dr("FlashID") = baseflashkey & "Sales Tax"
                     dr("FiscalYear") = FY
                     dr("MSPeriod") = MSP
                     dr("Week") = Week
                     dr("Unit") = unit
                     dr("Status") = "Flash"
                     dr("GL") = 0
-                    dr("GL_Category") = "SALES"
+                    dr("GL_Category") = "Sales Tax"
                     dr("FlashValue") = FormatNumber(Controls("SALES").Controls("FlashField").Text, 2)
                     If Controls("SALES").Controls("Notes").Text <> "Add notes here" Then
                         dr("FlashNotes") = Controls("SALES").Controls("Notes").Text

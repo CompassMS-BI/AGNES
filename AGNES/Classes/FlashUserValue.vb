@@ -12,7 +12,7 @@
     Private Sub LeaveField(sender As Object, e As EventArgs) Handles Me.Leave
         Dim testsingle As Single
         testsingle = FormatNumber(Text, 0)
-        If Debit = False Then
+        If Debit = False And OpenValue = False Then
             If testsingle > 0 Then Text = -testsingle
         End If
         Text = FormatCurrency(Text, 0)
