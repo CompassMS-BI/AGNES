@@ -20,7 +20,7 @@ Public Class Portal
         '#      Check for networks connection
         Dim connected As Boolean = False
 
-        'UserID = "v-paupie"      ' Enable and define this to "impersonate" another user for testing
+        ' UserID = "v-lanava"      ' Enable and define this to "impersonate" another user for testing
 
         Try
             DataSets.UsersAdapt.Fill(DataSets.UsersTable)
