@@ -26,8 +26,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>\\compasspowerbi\businessintelligence\AGNES Application\</InstallUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>7.8.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>7.8.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -226,6 +226,12 @@
     <Compile Include="DataSources\BIDataSet.vb">
       <DependentUpon>BIDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SupportForms\AssociateShorts.Designer.vb">
+      <DependentUpon>AssociateShorts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SupportForms\AssociateShorts.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SupportForms\BigMedia.Designer.vb">
       <DependentUpon>BigMedia.vb</DependentUpon>
     </Compile>
@@ -355,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\AVFlash.resx">
       <DependentUpon>AVFlash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportForms\AssociateShorts.resx">
+      <DependentUpon>AssociateShorts.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupportForms\BigMedia.resx">
       <DependentUpon>BigMedia.vb</DependentUpon>

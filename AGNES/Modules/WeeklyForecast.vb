@@ -40,6 +40,7 @@
             GetWeekOpDays()
             DestroyGroups()
             CreateGroups()
+            EnableAssociateMgmt()
             FetchBudget()
             FetchDRR()
             tsslSaveStatus.Visible = False
@@ -57,6 +58,8 @@
         Set(value As Boolean)
             W5 = value
             lblWeek5.Visible = value
+            btnAshrt5.Visible = value
+            btnAshrt5.Enabled = value
         End Set
     End Property
     Friend Property StartWeek As Byte
@@ -205,6 +208,13 @@
 #End Region
 
 #Region "Functions"
+    Private Sub EnableAssociateMgmt()
+        btnAshrt1.Enabled = True
+        btnAshrt2.Enabled = True
+        btnAshrt3.Enabled = True
+        btnAshrt4.Enabled = True
+        If Week5Present = True Then btnAshrt5.Enabled = True
+    End Sub
 
     Private Sub DestroyGroups()
         Dim ctrl As Control, fglist(10) As String, ct As Byte = 0, ct1 As Byte, fg As ForecastGroup
@@ -226,7 +236,7 @@
     Private Sub CreateGroups()
         Select Case forecasttype
             Case "Cafes"
-                Dim salesgroup As New ForecastGroup With {.Left = 9, .Top = 2, .ShowFifthWeek = Week5Present, .AvailableWeekStart = StartWeek, .IsRevenueBlock = True, .AllowAllValues = True, .Name = "Sales", .GroupName = "Sales", .SubTotalRef = "Total", .Enabled = True}
+                Dim salesgroup As New ForecastGroup With {.Left = 9, .Top = 2, .ShowFifthWeek = Week5Present, .AvailableWeekStart = StartWeek, .IsRevenueBlock = True, .AllowAllValues = False, .Name = "Sales", .GroupName = "Sales", .SubTotalRef = "Total", .Enabled = True}
                 Dim cogsgroup As New ForecastGroup With {.Left = 9, .Top = 61, .ShowFifthWeek = Week5Present, .AvailableWeekStart = StartWeek, .Name = "COGS", .GroupName = "COGS", .SubTotalRef = "Total"}
                 Dim laborgroup As New ForecastGroup With {.Left = 9, .Top = 120, .ShowFifthWeek = Week5Present, .AvailableWeekStart = StartWeek, .Name = "Labor", .GroupName = "Labor", .SubTotalRef = "Total"}
                 Dim opexgroup As New ForecastGroup With {.Left = 9, .Top = 179, .ShowFifthWeek = Week5Present, .AvailableWeekStart = StartWeek, .Name = "OPEX", .GroupName = "OPEX", .SubTotalRef = "Total"}
@@ -492,7 +502,15 @@
 
     End Sub
 
-
+    Private Sub LoadAssociateShortForm(sender As Object, e As EventArgs) Handles btnAshrt1.Click, btnAshrt2.Click, btnAshrt3.Click, btnAshrt4.Click, btnAshrt5.Click
+        Dim s As Button = sender
+        With AssociateShorts
+            .MSP = MSP
+            .Week = FormatNumber(s.Tag, 0)
+            .Unit = UnitNumber
+            .ShowDialog()
+        End With
+    End Sub
 #End Region
 
 End Class

@@ -41,6 +41,12 @@
     Public Shared JournalTable As New AGNESData.JournalEntriesDataTable
     Public Shared JournalAdapt As New AGNESDataTableAdapters.JournalEntriesTableAdapter
 
+    '////   Associate Shortages Data Sets
+    Public Shared AssocOutTable As New AGNESData.AssociateShortagesDataTable
+    Public Shared AssocOutAdapt As New AGNESDataTableAdapters.AssociateShortagesTableAdapter
+    Public Shared AssocBaseTable As New AGNESData.CafeBaseHeadcountsDataTable
+    Public Shared AssocBaseAdapt As New AGNESDataTableAdapters.CafeBaseHeadcountsTableAdapter
+
     '////   Menu Engineering Data Sets
     Public Shared CostingTable As New AGNESData.MenuItemCostingDataTable
     Public Shared CostingAdapt As New AGNESDataTableAdapters.MenuItemCostingTableAdapter
