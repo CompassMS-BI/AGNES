@@ -209,6 +209,8 @@
 
 #Region "Functions"
     Private Sub EnableAssociateMgmt()
+        Dim golive As Date = #8/10/2018#
+        If Now() < golive Then Exit Sub
         btnAshrt1.Enabled = True
         btnAshrt2.Enabled = True
         btnAshrt3.Enabled = True
