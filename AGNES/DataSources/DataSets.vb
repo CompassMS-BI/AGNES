@@ -47,6 +47,10 @@
     Public Shared AssocBaseTable As New AGNESData.CafeBaseHeadcountsDataTable
     Public Shared AssocBaseAdapt As New AGNESDataTableAdapters.CafeBaseHeadcountsTableAdapter
 
+    '////   Sick and Overtime Data Set
+    Public Shared SickOtTable As New AGNESData.CafeSickOtRecordsDataTable
+    Public Shared SickOtAdapt As New AGNESDataTableAdapters.CafeSickOtRecordsTableAdapter
+
     '////   Menu Engineering Data Sets
     Public Shared CostingTable As New AGNESData.MenuItemCostingDataTable
     Public Shared CostingAdapt As New AGNESDataTableAdapters.MenuItemCostingTableAdapter

@@ -170,12 +170,23 @@
     End Sub
 
     Private Sub ExitFlash(sender As Object, e As EventArgs) Handles tsmiClose.Click
+
         If (ActiveWeek.ChangesMade = True And ActiveWeek.Saved = False) And ActiveWeek.SaveType = "New" Then
             Dim amsg As New AgnesMsgBox("You have unsaved data.  Are you sure that you want to exit?", 2, True, Me.Name)
             amsg.ShowDialog()
             ynchoice = amsg.Choicemade
             amsg.Dispose()
             If ynchoice = False Then Exit Sub
+        End If
+        If ActiveWeek.MSPeriod > 0 And ActiveWeek.Week > 0 Then
+            Dim amsg1 As New AgnesMsgBox("Did you have any sick or overtime dollars to report?", 2, True, Me.Name)
+            amsg1.ShowDialog()
+            ynchoice = amsg1.Choicemade
+            amsg1.Dispose()
+            If ynchoice = True Then
+                Dim OtSick As New SickOT With {.MSP = ActiveWeek.MSPeriod, .Wk = ActiveWeek.Week, .Unit = UnitNumber}
+                OtSick.ShowDialog()
+            End If
         End If
         Close()
         If SentFromView = False Then
