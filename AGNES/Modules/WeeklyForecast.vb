@@ -104,7 +104,7 @@
     Friend RevenueBudget As Double
     Private MoveForm As Boolean
     Private MoveForm_MousePosition As Point
-    Dim associatesoutgolive As Date = #8/6/2018#
+    Dim associatesoutgolive As Date = #8/10/2018#
 #Region "Initialize Forecast"
     Private Sub LoadForecast(sender As Object, e As EventArgs) Handles Me.Load
         '# Fill all tables
