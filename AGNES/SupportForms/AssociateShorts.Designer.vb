@@ -42,6 +42,7 @@ Partial Class AssociateShorts
         Me.lblInstruct = New System.Windows.Forms.Label()
         Me.btnOkay = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.lblWarning = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txtHFri
@@ -219,7 +220,7 @@ Partial Class AssociateShorts
         '
         'btnOkay
         '
-        Me.btnOkay.Location = New System.Drawing.Point(40, 130)
+        Me.btnOkay.Location = New System.Drawing.Point(40, 135)
         Me.btnOkay.Name = "btnOkay"
         Me.btnOkay.Size = New System.Drawing.Size(75, 23)
         Me.btnOkay.TabIndex = 19
@@ -228,12 +229,21 @@ Partial Class AssociateShorts
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(152, 130)
+        Me.btnCancel.Location = New System.Drawing.Point(152, 135)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 23)
         Me.btnCancel.TabIndex = 20
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'lblWarning
+        '
+        Me.lblWarning.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWarning.Location = New System.Drawing.Point(12, 111)
+        Me.lblWarning.Name = "lblWarning"
+        Me.lblWarning.Size = New System.Drawing.Size(234, 21)
+        Me.lblWarning.TabIndex = 21
+        Me.lblWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'AssociateShorts
         '
@@ -242,6 +252,7 @@ Partial Class AssociateShorts
         Me.BackColor = System.Drawing.Color.Aqua
         Me.ClientSize = New System.Drawing.Size(258, 165)
         Me.ControlBox = False
+        Me.Controls.Add(Me.lblWarning)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnOkay)
         Me.Controls.Add(Me.lblInstruct)
@@ -294,4 +305,5 @@ Partial Class AssociateShorts
     Friend WithEvents lblInstruct As Label
     Friend WithEvents btnOkay As Button
     Friend WithEvents btnCancel As Button
+    Friend WithEvents lblWarning As Label
 End Class

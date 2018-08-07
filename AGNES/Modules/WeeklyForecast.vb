@@ -504,7 +504,8 @@
 
     Private Sub LoadAssociateShortForm(sender As Object, e As EventArgs) Handles btnAshrt1.Click, btnAshrt2.Click, btnAshrt3.Click, btnAshrt4.Click, btnAshrt5.Click
         Dim s As Button = sender
-        With AssociateShorts
+        Dim ASForm As New AssociateShorts
+        With ASForm
             .MSP = MSP
             .Week = FormatNumber(s.Tag, 0)
             .Unit = UnitNumber
