@@ -95,6 +95,7 @@
         dr("SalaryOut") = sval
         DataSets.AssocOutTable.Rows.Add(dr)
     End Sub
+
     Private Sub ExitForm(sender As Object, e As EventArgs) Handles btnCancel.Click
         Me.Close()
     End Sub
