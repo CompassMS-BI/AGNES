@@ -59,7 +59,7 @@
             W5 = value
             lblWeek5.Visible = value
             btnAshrt5.Visible = value
-            btnAshrt5.Enabled = value
+            If Now() >= associatesoutgolive Then btnAshrt5.Enabled = value
         End Set
     End Property
     Friend Property StartWeek As Byte
@@ -104,7 +104,7 @@
     Friend RevenueBudget As Double
     Private MoveForm As Boolean
     Private MoveForm_MousePosition As Point
-
+    Dim associatesoutgolive As Date = #8/10/2018#
 #Region "Initialize Forecast"
     Private Sub LoadForecast(sender As Object, e As EventArgs) Handles Me.Load
         '# Fill all tables
@@ -209,8 +209,7 @@
 
 #Region "Functions"
     Private Sub EnableAssociateMgmt()
-        Dim golive As Date = #8/10/2018#
-        If Now() < golive Then Exit Sub
+        If Now() < associatesoutgolive Then Exit Sub
         btnAshrt1.Enabled = True
         btnAshrt2.Enabled = True
         btnAshrt3.Enabled = True
@@ -514,6 +513,7 @@
             .ShowDialog()
         End With
     End Sub
+
 #End Region
 
 End Class
