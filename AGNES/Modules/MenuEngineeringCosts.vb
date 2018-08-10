@@ -271,7 +271,7 @@ Public Class MenuEngineeringCosts
 
     Private Sub PopulateDataGrid(station)
         systemchanges = True
-        Dim dr() As DataRow, itemnm As String, itemid As Long, webt As Double, itemcost As Double
+        Dim dr() As DataRow = Nothing, itemnm As String, itemid As Long, webt As Double, itemcost As Double
         If station = "All" Then
             Try
                 Select Case ViewChoice

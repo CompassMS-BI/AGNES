@@ -178,7 +178,7 @@
             amsg.Dispose()
             If ynchoice = False Then Exit Sub
         End If
-        If ActiveWeek.MSPeriod > 0 And ActiveWeek.Week > 0 Then
+        If ActiveWeek.MSPeriod > 0 And ActiveWeek.Week > 0 And Now() >= Portal.associatesoutgolive Then
             Dim amsg1 As New AgnesMsgBox("Did you have any sick or overtime dollars to report?", 2, True, Me.Name)
             amsg1.ShowDialog()
             ynchoice = amsg1.Choicemade
