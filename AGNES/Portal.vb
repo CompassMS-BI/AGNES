@@ -13,7 +13,7 @@ Public Class Portal
     Friend Synth As New SpeechSynthesizer With {.Rate = 1}
     Friend Muted As Boolean
     Private SystemChange As Boolean
-    Friend associatesoutgolive As Date = #8/17/2018#
+    Friend associatesoutgolive As Date = #8/13/2018#
 
 
 #Region "Initialization"
