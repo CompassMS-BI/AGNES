@@ -397,7 +397,7 @@
         '/  Create cogs group and label
         Dim CogsGroup As New FlashGroup With
     {.Left = 72, .Top = 175, .Width = 865, .Height = 112, .FlashIsStatic = False, .IsRevenueBlock = False, .ExcludeFromSubsidy = False, .ExcludePercentofSales = True,
-    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "COGS"}
+    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "COGS", .AllowAllValues = True}
 
         Dim CogsLabel As New Label With
             {.TextAlign = ContentAlignment.MiddleCenter, .Left = 1, .Top = 175, .Width = 70, .Height = 112, .Text = "COGS", .Font = New Drawing.Font("Segoe UI Emoji", 11, FontStyle.Regular), .Name = "COGSLABEL"}
@@ -407,7 +407,7 @@
         '/  Create labor group and label
         Dim LaborGroup As New FlashGroup With
     {.Left = 72, .Top = 290, .Width = 865, .Height = 112, .FlashIsStatic = False, .IsRevenueBlock = False, .ExcludeFromSubsidy = False, .ExcludePercentofSales = True,
-    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "LABOR"}
+    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "LABOR", .AllowAllValues = True}
 
         Dim LaborLabel As New Label With
             {.TextAlign = ContentAlignment.MiddleCenter, .Left = 1, .Top = 290, .Width = 70, .Height = 112, .Text = "Labor", .Font = New Drawing.Font("Segoe UI Emoji", 11, FontStyle.Regular), .Name = "COGSLABEL"}
@@ -417,7 +417,7 @@
         '/  Create OPEX group and label
         Dim OpexGroup As New FlashGroup With
     {.Left = 72, .Top = 405, .Width = 865, .Height = 112, .FlashIsStatic = False, .IsRevenueBlock = False, .ExcludeFromSubsidy = False, .ExcludePercentofSales = True,
-    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "OPEX"}
+    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "OPEX", .AllowAllValues = True}
 
         Dim OpexLabel As New Label With
             {.TextAlign = ContentAlignment.MiddleCenter, .Left = 1, .Top = 405, .Width = 70, .Height = 112, .Text = "OPEX", .Font = New Drawing.Font("Segoe UI Emoji", 11, FontStyle.Regular), .Name = "COGSLABEL"}
@@ -427,7 +427,7 @@
         '/  Create fees group and label
         Dim FeesGroup As New FlashGroup With
     {.Left = 72, .Top = 520, .Width = 865, .Height = 112, .FlashIsStatic = False, .IsRevenueBlock = False, .ExcludeFromSubsidy = False, .ExcludePercentofSales = True,
-    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "FEES"}
+    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "FEES", .AllowAllValues = True}
 
         Dim FeesLabel As New Label With
             {.TextAlign = ContentAlignment.MiddleCenter, .Left = 1, .Top = 520, .Width = 70, .Height = 112, .Text = "Fees", .Font = New Drawing.Font("Segoe UI Emoji", 11, FontStyle.Regular), .Name = "COGSLABEL"}
@@ -437,7 +437,7 @@
         '/  Create total group and label
         Dim TotalGroup As New FlashGroup With
     {.Left = 72, .Top = 635, .Width = 865, .Height = 55, .FlashIsStatic = True, .IsRevenueBlock = False, .ExcludeFromSubsidy = False, .ExcludePercentofSales = True,
-    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "TOTAL", .Enabled = False}
+    .SubTotalRef = "", .IsSubtotal = False, .IncludeForecast = False, .Name = "TOTAL", .Enabled = False, .AllowAllValues = True}
 
         Dim TotalLabel As New Label With
             {.TextAlign = ContentAlignment.MiddleCenter, .Left = 1, .Top = 635, .Width = 70, .Height = 55, .Text = "Total", .Font = New Drawing.Font("Segoe UI Emoji", 11, FontStyle.Regular), .Name = "COGSLABEL"}
